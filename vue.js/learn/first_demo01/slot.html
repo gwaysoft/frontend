@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--view layer template-->
+<div id="app">
+    {{ message }} <br/>
+    <my-component>
+        <slot-head :title="title"></slot-head>
+        <lili v-for="(item, indexv) in liliList" :item="item" :index="indexv"
+              v-on:removelower="removeLiliItem(indexv)"></lili>
+    </my-component>
+    <!--    <button @click="removeLiliItem"></button>-->
+</div>
+
+<script src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
+<script>
+    Vue.component('my-component', {
+        template: '<h3><slot></slot></h3> \
+                    <ul>\
+                        <slot></slot>\
+                    </ul>'
+    })
+
+    Vue.component('slot-head', {
+        props: ["title"],
+        template: '<strong style="color: #ff0000">{{title}}</strong>'
+    })
+    Vue.component('lili', {
+        props: ["item", "index"],
+        template: `
+          <li>
+          No. {{ index }} - {{ item }}
+<!--          <button @click="remove1">{{ item }}</button>-->
+          <button @click="$emit('removelower')">{{ item }}</button>
+          </li>
+        `,
+        // 2
+        methods: {
+            remove1: function () {
+                this.$emit("removelower")
+            }
+        }
+    })
+    var vm = new Vue({
+        el: "#app",
+        // model layer
+        data: {
+            message: "hello. vue!",
+            title: "dddddd",
+            liliList: ["dd", "ee", "gg"]
+        },
+        methods: {
+            removeLiliItem: function (index) {
+                console.log(index)
+                this.liliList.splice(index, 1)
+            }
+        }
+    });
+</script>
+</body>
+</html>

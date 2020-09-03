@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id="h1">dd</h1>
+<div id="app">
+    <input type="radio" name="a" value="male" v-model="message">
+    <input type="radio" name="a" value="female" v-model="message">
+    <br/>
+    <input v-model="message" placeholder="hit me">
+    <br/>
+    {{ message }}
+    <br/>
+    <textarea v-model="message"></textarea>
+    <p v-if="isOk">OK</p>
+    <p v-else>Not Ok</p>
+    <input type="checkbox" v-model="checked" id="cbid">
+    <label for="cbid">{{checked}}</label>
+    <br/>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+    <br>
+    <select v-model="selected">
+        <option value="-1">Please select</option>
+        <option v-for="option in options" v-bind:value="option.value" v-text="option.text">
+        </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+    <p v-if="type === 'A'">A?</p>
+    <p v-else-if="type == 'B'">bd</p>
+    <p v-else>other</p>
+
+    <p v-for="item in list">
+        No. {{ item }}
+    </p>
+
+    <p v-for="(key, value, index) in object" :key="object.age">
+        No. {{ index }} | {{ value }} = {{ key }}
+    </p>
+
+    <p v-for="(item, index) in object" :key="object.age">
+        No. {{ index }} {{ item.name }} {{ item.age }} {{ item.gender }}
+    </p>
+</div>
+<!--view layer template-->
+<div id="app2">
+    <span v-bind:title="message">悬停显示v-bind</span>
+    <span>{{ data01 }}</span><br>
+    <button v-on:click.prevent="preventCountPlus">prevent</button>
+    <button v-on:click="countPlus"> count plus</button>
+    <p>{{ count }}</p>
+</div>
+
+
+<script src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "hello. vue!",
+            isOk: true,
+            checked: true,
+            checkedNames: [],
+            type: "A",
+            list: [1, 2, 4, 5],
+            object: [{"name": "kaka", "age": 12, "gender": "male"}, {"name": "feee", "age": 15, "gender": "female"}],
+            selected: 'A',
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ]
+        }
+    });
+
+    var vm2 = new Vue({
+        el: "#app2",
+        // model layer
+        data: {
+            message: "hello2. vue!",
+            data01: 'ddddd',
+            count: 0
+        },
+        methods: {
+            countPlus: function (event) {
+                this.count = this.count + 1;
+                if (event) {
+                    console.log(event.target.tagName)
+                }
+            },
+            preventCountPlus: function (event) {
+                console.log("prevent")
+                this.count = 5;
+            }
+        }
+    });
+</script>
+</body>
+</html>

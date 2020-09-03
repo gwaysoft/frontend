@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--view layer template-->
+<div id="app">
+    {{ message }}
+    <base-checkbox v-model="lovingVue"></base-checkbox>
+</div>
+
+<script src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
+<script>
+    Vue.component('base-checkbox', {
+        model: {
+            prop: 'checked',
+            event: 'changelower'
+        },
+        props: {
+            checked: Boolean
+        },
+        template: `
+    <input
+      type="checkbox"
+      v-bind:checked="checked"
+      v-on:change="$emit('changelower', $event.target.checked)"
+    >
+  `
+    })
+    var vm = new Vue({
+        el: "#app",
+        // model layer
+        data: {
+            message: "hello. vue!",
+            lovingVue: true
+        }
+    });
+</script>
+</body>
+</html>

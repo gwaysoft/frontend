@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-clock] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--view layer template-->
+<div id="app">
+
+    {{ message }} <br/>
+    {{ reversedMessage }}
+    <p>{{now}}</p>
+    <p><input type="button" v-on:click="testNow" value="ddd"> {{nowDate1}}  {{nowDate2}} {{testNow()}}</p>
+    <h1>Bitcoin Price Index</h1>
+    <div
+            v-for="currency in info"
+            class="currency">
+        {{ currency.description }}:
+        <input type="text" v-model="currency.description">
+        <span class="lighten">
+      <span v-html="currency.symbol"></span>{{ currency.rate_float | currencydecimal }}
+    </span>
+    </div>
+</div>
+
+<script src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        // model layer
+        data: {
+            message: "hello. vue!",
+            info: null,
+            nowDate1: 0,
+            nowDate2: 0
+        },
+        computed: {
+            reversedMessage: function () {
+                return this.message.split("").reverse().join("")
+            },
+            now: function (){
+                return Date.now()
+            }
+        },
+
+        filters: {
+            currencydecimal(value) {
+                return value.toFixed(2)
+            }
+        },
+        methods: {
+            testNow: function (event){
+                this.nowDate1 = this.now;
+                this.nowDate2 = Date.now()
+                return this.nowDate2
+            }
+        },
+        created() {
+            console.log("created")
+        },
+        beforeCreate() {
+            console.log("beforeCreated")
+        },
+        beforeMount() {
+            console.log("beforeMount")
+        },
+        mounted() {
+            axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                .then(response => (this.info = response.data.bpi))
+                .catch(error => console.log(error))
+        },
+        beforeUpdate() {
+            console.debug("beforeUpdate")
+        },
+        updated() {
+            console.debug("updated")
+        },
+        destroyed() {
+            console.log("destroyed")
+        }
+    });
+</script>
+</body>
+</html>

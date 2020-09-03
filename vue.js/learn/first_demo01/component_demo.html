@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--view layer template-->
+<div id="app">
+    <h3>{{ message }}</h3>
+    <button-counter></button-counter>
+</div>
+
+<div id="app2">
+    <h3>{{ message }}</h3>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <blog-post :style="{ fontSize: postFontSize + 'em' }" v-for="item in titlerList" v-bind:titler="item"
+               v-on:enlarge-text="postFontSize += 0.1"></blog-post>
+    <alert-box>
+        Something bad happened.
+    </alert-box>
+    <component-a></component-a>
+    <component-b></component-b>
+</div>
+
+<script src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
+<script>
+    Vue.component("button-counter", {
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: "<button v-on:click='cmethod'>You click me {{count}} </button>",
+        methods: {
+            cmethod: function () {
+                this.count++
+                return Date.now() + "  " + this.count++
+            }
+        }
+    })
+
+    Vue.component("blog-post", {
+        props: ["enlarge-text", "titler"],
+        template: '<div class="blog-post"> {{ titler.id }} {{ titler.name }}<div v-html="titler.key"></div> ' +
+            '<button v-on:click="$emit(\'enlarge-text\')"> Enlarge text </button> </div>'
+    })
+    var vm = new Vue({
+        el: "#app",
+        // model layer
+        data: {
+            message: "hello. vue!"
+        }
+    });
+
+    Vue.component('alert-box', {
+        template: `
+            <div class="demo-alert-box">
+              <strong>Error!</strong>
+              <slot></slot>
+            </div>
+          `
+    })
+
+    var ComponentA = {
+        template: "<h3>dddd</h3>"
+    }
+    var ComponentB = {
+        components: {
+            'component-bb': ComponentA
+        }
+    }
+
+
+    var vm = new Vue({
+        el: "#app2",
+        // model layer
+        data: {
+            message: "hello2. vue!",
+            titlerList: [
+                {"id": 1, "name": "yiyiyi"},
+                {"id": 2, "name": "erer"}
+            ],
+            postFontSize: 1
+        },
+        components: {
+            'component-a': ComponentA,
+            'component-b': ComponentB.components["component-bb"]
+        }
+    });
+</script>
+</body>
+</html>
