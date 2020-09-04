@@ -2,7 +2,7 @@
   <div>
     <p @mousemove="mouse_move" ref="mouse">:{{x}},{{y}}
       <span @mousemove="stopPropagation" v-html='a'>sss</span>
-      <span
+      <span @mousemove.stop v-text="text"></span>
     </p>
     <br/>
     <el-button type="primary" @click="stopPropagation">stop</el-button>
@@ -17,7 +17,8 @@ export default {
       x: 0,
       y: 0,
       url:"http://www.baidu.com",
-      a: '<a href="http://www.baidu.com"> link</a>'
+      a: '<a href="http://www.baidu.com"> link</a>',
+      text: 'dddddee'
     }
   },
   methods: {
