@@ -82,7 +82,7 @@
 <node CREATED="1596596378043" ID="ID_1260376459" MODIFIED="1596596380991" TEXT="Deno"/>
 </node>
 <node CREATED="1596598633234" ID="ID_542946794" MODIFIED="1599030875278" POSITION="right" TEXT="framework">
-<node CREATED="1593768292750" ID="ID_1910093076" MODIFIED="1593770686494" TEXT="vue.js">
+<node CREATED="1593768292750" ID="ID_1910093076" MODIFIED="1599206839127" TEXT="vue.js">
 <node CREATED="1593769854741" ID="ID_965670478" MODIFIED="1596595870664" TEXT="reference">
 <node CREATED="1596595871766" ID="ID_1855983937" MODIFIED="1599029709002" TEXT="https://vuejs.org/">
 <node CREATED="1599029676388" ID="ID_1102744413" MODIFIED="1599029701352" TEXT="the progressive javascript framework"/>
@@ -152,8 +152,7 @@
   <body>
     <img src="frontend_pic/mvvm-2.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1596606662395" ID="ID_801682413" MODIFIED="1599036387668" TEXT="ViewModel&#x76d1;&#x542c;&#x5230;Model&#x7684;&#x53d8;&#x5316;&#xff0c;&#x5e76;&#x5bf9;view&#x5185;&#x5bb9;&#x8fdb;&#x884c;&#x66f4;&#x65b0;"/>
@@ -234,6 +233,7 @@
 <node CREATED="1599122697483" ID="ID_1229764012" MODIFIED="1599122712901" TEXT="form input bindings">
 <node CREATED="1599122712902" ID="ID_1894278664" MODIFIED="1599122719084" TEXT="v-model"/>
 </node>
+<node CREATED="1599206010327" ID="ID_1195980934" MODIFIED="1599206045178" TEXT="computed properties and watchers"/>
 </node>
 <node CREATED="1596709625631" ID="ID_359222654" MODIFIED="1597025835888" TEXT="vue-cli">
 <node CREATED="1596769275244" ID="ID_1940192251" MODIFIED="1596769289356" TEXT="https://cli.vuejs.org/guide/installation.html"/>
@@ -291,8 +291,8 @@
 </node>
 </node>
 <node CREATED="1596770077421" ID="ID_1665139447" MODIFIED="1596770078704" TEXT="project">
-<node CREATED="1596778855860" ID="ID_432451959" MODIFIED="1596780478075" TEXT="create">
-<node CREATED="1596769290884" ID="ID_473491539" MODIFIED="1597031028505" TEXT="vue create create hello-world">
+<node CREATED="1596778855860" ID="ID_432451959" MODIFIED="1599202700538" TEXT="create (best practice)">
+<node CREATED="1596769290884" ID="ID_473491539" MODIFIED="1599202720683" TEXT="vue create hello-world">
 <node CREATED="1596769296524" ID="ID_799899165" MODIFIED="1596769301613" TEXT="git bash">
 <node CREATED="1596769301613" ID="ID_1418999599" MODIFIED="1596769322696" TEXT="winpty vue.cmd create hello-world"/>
 </node>
@@ -627,6 +627,80 @@ Documentation can be found at https://vuejs-templates.github.io/webpack         
     </ol>
   </body>
 </html></richcontent>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1599206863454" ID="ID_659925823" MODIFIED="1599206870022" TEXT="practice">
+<node CREATED="1599206870024" ID="ID_427260709" MODIFIED="1599207024821" TEXT="project">
+<node CREATED="1599207017208" ID="ID_939958076" MODIFIED="1599207249358" TEXT="prerequisite">
+<node CREATED="1599206877022" ID="ID_412626138" MODIFIED="1599206887578" TEXT="install nodejs"/>
+<node CREATED="1599206889245" ID="ID_390216950" MODIFIED="1599206999211" TEXT="npm i -g @vue/cli"/>
+<node CREATED="1599207250638" ID="ID_864790950" MODIFIED="1599207253493" TEXT="vue project">
+<node CREATED="1599207217603" ID="ID_880048715" MODIFIED="1599207233933" TEXT="tools">
+<node CREATED="1599207233934" ID="ID_137090182" MODIFIED="1599207239010" TEXT="webstorm">
+<node CREATED="1599207239910" ID="ID_1847773335" MODIFIED="1599207243278" TEXT="new project">
+<node CREATED="1599207243279" ID="ID_1070853622" MODIFIED="1599207244611" TEXT="vue"/>
+</node>
+</node>
+</node>
+<node CREATED="1599207257807" ID="ID_554873389" MODIFIED="1599207266733" TEXT="manual">
+<node CREATED="1599206925270" ID="ID_782602442" MODIFIED="1599207014629" TEXT="vue create vue-element-start"/>
+</node>
+</node>
+</node>
+<node CREATED="1599207273754" ID="ID_1839646305" MODIFIED="1599207312708" TEXT="development">
+<node CREATED="1599207312708" ID="ID_1395599617" MODIFIED="1599207406592" TEXT="add elementui dependencies">
+<node CREATED="1599207333716" ID="ID_5330891" MODIFIED="1599207334648" TEXT="npm i element-ui -S">
+<node CREATED="1599207366443" ID="ID_1983058590" MODIFIED="1599207379428" TEXT="at project root directory"/>
+</node>
+<node CREATED="1599207347251" ID="ID_344510237" MODIFIED="1599207354855">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <pre style="background-color: #131314; color: #ebebeb; font-family: JetBrains Mono,monospace; font-size: 10.5pt"><font color="#ed864a">import </font>ElementUI <font color="#ed864a">from </font><font color="#54b33e">'element-ui'<br /></font><font color="#ed864a">import </font><font color="#54b33e">'element-ui/lib/theme-chalk/index.css'</font></pre>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node CREATED="1599207360203" ID="ID_1071397363" MODIFIED="1599208075884" TEXT="add vue router">
+<node CREATED="1599208035278" ID="ID_1579518179" MODIFIED="1599209744195">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <pre style="background-color: #131314; color: #ebebeb; font-family: JetBrains Mono,monospace; font-size: 10.5pt"><font color="#7ec3e6">npm install -save vue-router<br />npm install --save core-js</font></pre>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1599208076957" ID="ID_1918529097" MODIFIED="1599208080149">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <pre style="background-color: #131314; color: #ebebeb; font-family: JetBrains Mono,monospace; font-size: 10.5pt"><font color="#ed864a">import </font>Vue <font color="#ed864a">from </font><font color="#54b33e">&quot;vue&quot;<br /><br /></font><font color="#7ec3e6">// npm install vue-router<br /></font><font color="#ed864a">import </font>Router <font color="#ed864a">from </font><font color="#54b33e">&quot;vue-router&quot;<br /><br /></font>Vue.<font color="#ffc66d">use</font>(Router)</pre>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1599209763005" ID="ID_808177850" MODIFIED="1599209766189" TEXT="app.vue">
+<node CREATED="1599209766190" ID="ID_990987305" MODIFIED="1599209770275">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <pre style="background-color: #131314; color: #ebebeb; font-family: JetBrains Mono,monospace; font-size: 10.5pt"><font color="#ed864a">&lt;template&gt;<br />  &lt;div </font><font color="#ffffff">id</font><font color="#54b33e">=&quot;app&quot;</font><font color="#ed864a">&gt;<br />    &lt;router-view/&gt;<br />  &lt;/div&gt;<br />&lt;/template&gt;</font></pre>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
 </node>
 </node>
 </node>
