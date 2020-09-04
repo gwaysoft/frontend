@@ -10,6 +10,7 @@ import Login from "../view/login/index"
 import Layout from "../layout/index"
 import s1 from "../view/simple/s1"
 import s2 from "../view/simple/s2"
+import mouseover from "@/view/mouseover.stop"
 
 // import App from '../App.vue'
 
@@ -22,6 +23,10 @@ export default new Router({
         //     path:"/",
         //     component: App
         // },
+        {
+            path: "/mouseover",
+            component: mouseover
+        },
         {
             path: "/s1",
             component: s1
