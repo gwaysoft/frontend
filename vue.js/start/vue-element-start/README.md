@@ -1,7 +1,7 @@
 # vue-element-start
 
 ## Project setup
-```
+```shell script
 yarn install
 ```
 
