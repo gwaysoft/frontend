@@ -64,9 +64,9 @@ export default {
   },
   methods:{
     getDataList: function (){
-      this.axios.get("http://192.168.2.110:5000/api/menu")
+      // this.axios.get("http://192.168.2.110:5000/api/menu")
 
-      // this.axios.get("http://localhost:8080/static/json/dataList.json")
+      this.axios.get("http://localhost:8080/static/json/dataList.json")
           .then((response) =>{
             console.log(response.data.dataList)
             this.dataList =  response.data.dataList
